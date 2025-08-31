@@ -9,5 +9,7 @@ gem "irb"
 gem "rake", "~> 13.0"
 
 gem "rbs-inline", require: false
+gem "rspec", require: false
 gem "rubocop", "~> 1.21"
+gem "ruby-lsp-rspec", require: false
 gem "steep", require: false
