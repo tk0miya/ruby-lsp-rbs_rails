@@ -8,6 +8,7 @@
         "lsp",
         "popen",
         "readlines",
+        "rubocop",
         "Takeshi"
     ],
     "rbs-helper.rbs-inline-on-save": true,
