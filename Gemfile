@@ -8,5 +8,6 @@ gemspec
 gem "irb"
 gem "rake", "~> 13.0"
 
+gem "rbs-inline", require: false
 gem "rubocop", "~> 1.21"
 gem "steep", require: false

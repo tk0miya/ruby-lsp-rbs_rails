@@ -1,6 +1,8 @@
+# Generated from lib/ruby_lsp/rbs_rails.rb with RBS::Inline
+
 module RubyLsp
   module RbsRails
-    VERSION: String
-    # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+    class Error < StandardError
+    end
   end
 end
