@@ -4,4 +4,11 @@ module RubyLsp
 
   class GlobalState
   end
+
+  class Message
+  end
+
+  class Notification < Message
+    def self.window_log_message: (String message, ?type: Integer) -> Notification
+  end
 end

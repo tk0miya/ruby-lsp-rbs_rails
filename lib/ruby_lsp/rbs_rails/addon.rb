@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
+require_relative "logger"
+
 module RubyLsp
   module RbsRails
     class Addon < ::RubyLsp::Addon
       attr_reader :global_state #: GlobalState
-      attr_reader :message_queue #: Thread::Queue
+      attr_reader :logger #: Logger
 
       # @rbs global_state: GlobalState
       # @rbs message_queue: Thread::Queue
       def activate(global_state, message_queue) #: void
         @global_state = global_state
-        @message_queue = message_queue
+        @logger = Logger.new(message_queue)
       end
 
       def deactivate #: void

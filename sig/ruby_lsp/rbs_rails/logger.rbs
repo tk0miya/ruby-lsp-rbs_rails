@@ -1,0 +1,15 @@
+# Generated from lib/ruby_lsp/rbs_rails/logger.rb with RBS::Inline
+
+module RubyLsp
+  module RbsRails
+    class Logger
+      attr_reader message_queue: Thread::Queue
+
+      # @rbs message_queue: Thread::Queue
+      def initialize: (Thread::Queue message_queue) -> void
+
+      # @rbs message: String
+      def info: (String message) -> void
+    end
+  end
+end
