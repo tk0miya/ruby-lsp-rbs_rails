@@ -1,0 +1,21 @@
+# Generated from lib/ruby_lsp/rbs_rails/addon.rb with RBS::Inline
+
+module RubyLsp
+  module RbsRails
+    class Addon < ::RubyLsp::Addon
+      attr_reader global_state: GlobalState
+
+      attr_reader message_queue: Thread::Queue
+
+      # @rbs global_state: GlobalState
+      # @rbs message_queue: Thread::Queue
+      def activate: (GlobalState global_state, Thread::Queue message_queue) -> void
+
+      def deactivate: () -> void
+
+      def name: () -> String
+
+      def version: () -> String
+    end
+  end
+end

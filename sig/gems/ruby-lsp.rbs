@@ -1,0 +1,7 @@
+module RubyLsp
+  class Addon
+  end
+
+  class GlobalState
+  end
+end
