@@ -1,0 +1,11 @@
+module LanguageServer
+  module Protocol
+    module Constant
+      module FileChangeType
+        CREATED: 1
+        CHANGED: 2
+        DELETED: 3
+      end
+    end
+  end
+end

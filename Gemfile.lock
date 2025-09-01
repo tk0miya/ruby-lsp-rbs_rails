@@ -10,6 +10,7 @@ PATH
   remote: .
   specs:
     ruby-lsp-rbs_rails (0.1.0)
+      language_server-protocol
       railties
       rbs_rails
       ruby-lsp

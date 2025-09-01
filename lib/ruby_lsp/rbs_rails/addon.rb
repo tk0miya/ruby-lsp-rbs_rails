@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "language_server-protocol"
 require "ruby_lsp/addon"
 
 require_relative "logger"
@@ -7,6 +8,8 @@ require_relative "logger"
 module RubyLsp
   module RbsRails
     class Addon < ::RubyLsp::Addon
+      include LanguageServer::Protocol::Constant
+
       attr_reader :global_state #: GlobalState
       attr_reader :logger #: Logger
 
