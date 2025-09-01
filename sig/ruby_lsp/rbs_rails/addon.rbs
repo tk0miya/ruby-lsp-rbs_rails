@@ -16,6 +16,21 @@ module RubyLsp
       def name: () -> String
 
       def version: () -> String
+
+      private
+
+      @workspace_path: Pathname?
+
+      def workspace_path: () -> Pathname
+
+      # Load Rails application and enable reloading
+      def load_application: () -> void
+
+      def install_hooks: () -> void
+
+      def load_rbs_rails_config: () -> void
+
+      def config: () -> ::RbsRails::CLI::Configuration
     end
   end
 end

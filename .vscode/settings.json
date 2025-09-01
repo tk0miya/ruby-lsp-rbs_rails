@@ -3,9 +3,18 @@
         "editor.defaultFormatter": "Shopify.ruby-lsp"
     },
     "cSpell.words": [
+        "actioncable",
+        "actionmailer",
+        "actiontext",
+        "activejob",
+        "activemodel",
+        "activerecord",
+        "activestorage",
+        "autoloaders",
         "bindir",
         "KOMIYA",
         "lsp",
+        "pocke",
         "popen",
         "readlines",
         "rubocop",

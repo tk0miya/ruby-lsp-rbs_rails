@@ -13,7 +13,31 @@ sources:
 # A directory to install the downloaded RBSs
 path: .gem_rbs_collection
 
-# gems:
-#   # If you want to avoid installing rbs files for gems, you can specify them here.
-#   - name: GEM_NAME
-#     ignore: true
+gems:
+  # rbs_rails conflicts with parser gem because rbs_rails distributes types for parser gem.  This is a bug of rbs_rails.
+  - name: parser
+    ignore: true
+
+  # Ignore dependencies from spec/test-app
+  - name: actionmailer
+    ignore: true
+  - name: actioncable
+    ignore: true
+  - name: actiontext
+    ignore: true
+  - name: activejob
+    ignore: true
+  - name: activemodel
+    ignore: true
+  - name: activerecord
+    ignore: true
+  - name: activestorage
+    ignore: true
+  - name: mail
+    ignore: true
+  - name: marcel
+    ignore: true
+  - name: mini_mime
+    ignore: true
+  - name: sqlite3
+    ignore: true

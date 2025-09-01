@@ -3,6 +3,7 @@ module RubyLsp
   end
 
   class GlobalState
+    attr_reader workspace_path: String
   end
 
   class Message

@@ -29,5 +29,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "railties"
+  spec.add_dependency "rbs_rails"
   spec.add_dependency "ruby-lsp"
 end
