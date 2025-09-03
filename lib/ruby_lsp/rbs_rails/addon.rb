@@ -36,6 +36,24 @@ module RubyLsp
         VERSION
       end
 
+      # @rbs! type fileChangeTypes = FileChangeType::CREATED | FileChangeType::CHANGED | FileChangeType::DELETED
+
+      # @rbs changes: Array[{ uri: String, type: fileChangeTypes }]
+      def workspace_did_change_watched_files(changes) #: void
+        return unless defined?(::Rails)
+
+        ::Rails.application.reloader.wrap do
+          changes.each do |change|
+            case change[:type]
+            when FileChangeType::CREATED, FileChangeType::CHANGED
+              # TODO
+            when FileChangeType::DELETED
+              delete_signature(change[:uri])
+            end
+          end
+        end
+      end
+
       private
 
       # @rbs @workspace_path: Pathname?
@@ -73,6 +91,31 @@ module RubyLsp
 
       def config #: ::RbsRails::CLI::Configuration
         ::RbsRails::CLI::Configuration.instance
+      end
+
+      # @rbs uri: String
+      def delete_signature(uri) #: void
+        path = uri_to_path(uri)
+        return unless path
+        return unless path.extname == ".rb"
+
+        rbs_path = config.signature_root_dir / path.sub_ext(".rbs")
+        return unless rbs_path.exist?
+
+        rbs_path.delete
+        logger.info("Deleted RBS signature: #{rbs_path}")
+      rescue StandardError => e
+        logger.info("Failed to delete signature for #{path}: #{e.message}")
+      end
+
+      # @rbs uri: String
+      def uri_to_path(uri) #: Pathname?
+        path = uri.delete_prefix("file://")
+
+        # Ignore if the given path is not under Rails.root
+        return nil unless path.start_with?(::Rails.root.to_s + File::SEPARATOR)
+
+        Pathname.new(path).relative_path_from(::Rails.root)
       end
     end
   end

@@ -19,6 +19,11 @@ module RubyLsp
 
       def version: () -> String
 
+      type fileChangeTypes = FileChangeType::CREATED | FileChangeType::CHANGED | FileChangeType::DELETED
+
+      # @rbs changes: Array[{ uri: String, type: fileChangeTypes }]
+      def workspace_did_change_watched_files: (Array[{ uri: String, type: fileChangeTypes }] changes) -> void
+
       private
 
       @workspace_path: Pathname?
@@ -33,6 +38,12 @@ module RubyLsp
       def load_rbs_rails_config: () -> void
 
       def config: () -> ::RbsRails::CLI::Configuration
+
+      # @rbs uri: String
+      def delete_signature: (String uri) -> void
+
+      # @rbs uri: String
+      def uri_to_path: (String uri) -> Pathname?
     end
   end
 end
