@@ -42,6 +42,8 @@ module RubyLsp
       # @rbs uri: String
       def generate_signature: (String uri) -> void
 
+      def generate_all_model_signatures: () -> void
+
       # @rbs klass: Class
       def generate_signature0: (Class klass) -> void
 

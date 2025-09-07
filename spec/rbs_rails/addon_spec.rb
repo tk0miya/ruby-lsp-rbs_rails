@@ -104,7 +104,19 @@ RSpec.describe RubyLsp::RbsRails::Addon do
         end
       end
 
-      context "when a non-model file is created" do
+      context "when db/schema.rb is created" do
+        let(:filename) { "db/schema.rb" }
+
+        it "generates RBS files for all models" do
+          subject
+
+          rbs_files = Pathname.new("#{workspace_path}/sig/").glob("**/*.rbs").map(&:to_s)
+          expect(rbs_files).to contain_exactly("#{workspace_path}/sig/rbs_rails/app/models/user.rbs",
+                                               "#{workspace_path}/sig/rbs_rails/app/models/blog.rbs")
+        end
+      end
+
+      context "when any other file is created" do
         let(:filename) { "app/controllers/users_controller.rb" }
 
         it "generates no RBS files" do

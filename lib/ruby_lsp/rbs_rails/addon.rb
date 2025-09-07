@@ -98,12 +98,24 @@ module RubyLsp
         path = uri_to_path(uri)
         return unless path
 
-        klass = constantize(path)
-        return unless klass
+        case path.to_s
+        when "db/schema.rb"
+          generate_all_model_signatures
+        else
+          klass = constantize(path)
+          return unless klass
 
-        generate_signature0(klass)
+          generate_signature0(klass)
+        end
       rescue StandardError => e
         logger.info("Failed to generate signature for #{path}: #{e.message}")
+      end
+
+      def generate_all_model_signatures #: void
+        ::Rails.application.eager_load!
+        ::ActiveRecord::Base.descendants.each do |klass|
+          generate_signature0(klass)
+        end
       end
 
       # @rbs klass: Class
