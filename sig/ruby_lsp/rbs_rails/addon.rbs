@@ -44,6 +44,8 @@ module RubyLsp
 
       def generate_all_model_signatures: () -> void
 
+      def generate_path_helpers_signature: () -> void
+
       # @rbs klass: Class
       def generate_signature0: (Class klass) -> void
 

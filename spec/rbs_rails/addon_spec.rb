@@ -116,6 +116,32 @@ RSpec.describe RubyLsp::RbsRails::Addon do
         end
       end
 
+      context "when config/routes.rb is created" do
+        let(:filename) { "config/routes.rb" }
+        let(:rbs_path) { Pathname.new("#{workspace_path}/sig/rbs_rails/path_helpers.rbs") }
+
+        it "generates path_helpers.rbs" do
+          subject
+
+          expect(rbs_path).to exist
+          content = rbs_path.read
+          expect(content).to include("interface ::_RbsRailsPathHelpers")
+        end
+      end
+
+      context "when config/routes/*.rb is created" do
+        let(:filename) { "config/routes/api.rb" }
+        let(:rbs_path) { Pathname.new("#{workspace_path}/sig/rbs_rails/path_helpers.rbs") }
+
+        it "generates path_helpers.rbs" do
+          subject
+
+          expect(rbs_path).to exist
+          content = rbs_path.read
+          expect(content).to include("interface ::_RbsRailsPathHelpers")
+        end
+      end
+
       context "when any other file is created" do
         let(:filename) { "app/controllers/users_controller.rb" }
 

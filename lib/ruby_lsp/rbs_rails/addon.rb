@@ -101,6 +101,8 @@ module RubyLsp
         case path.to_s
         when "db/schema.rb"
           generate_all_model_signatures
+        when %r{^config/(routes\.rb|routes/.*\.rb)$}
+          generate_path_helpers_signature
         else
           klass = constantize(path)
           return unless klass
@@ -116,6 +118,15 @@ module RubyLsp
         ::ActiveRecord::Base.descendants.each do |klass|
           generate_signature0(klass)
         end
+      end
+
+      def generate_path_helpers_signature #: void
+        rbs_path = config.signature_root_dir / "path_helpers.rbs"
+        rbs_path.dirname.mkpath
+
+        sig = ::RbsRails::PathHelpers.generate
+        rbs_path.write sig
+        logger.info("Updated RBS signature: #{rbs_path}")
       end
 
       # @rbs klass: Class
