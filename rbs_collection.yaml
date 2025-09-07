@@ -29,8 +29,6 @@ gems:
     ignore: true
   - name: activemodel
     ignore: true
-  - name: activerecord
-    ignore: true
   - name: activestorage
     ignore: true
   - name: mail

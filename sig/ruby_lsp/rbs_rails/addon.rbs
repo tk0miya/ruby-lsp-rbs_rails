@@ -40,10 +40,22 @@ module RubyLsp
       def config: () -> ::RbsRails::CLI::Configuration
 
       # @rbs uri: String
+      def generate_signature: (String uri) -> void
+
+      # @rbs klass: Class
+      def generate_signature0: (Class klass) -> void
+
+      # @rbs uri: String
       def delete_signature: (String uri) -> void
 
       # @rbs uri: String
       def uri_to_path: (String uri) -> Pathname?
+
+      # @rbs path: Pathname
+      def constantize: (Pathname path) -> Class?
+
+      # @rbs klass: Class
+      def get_rbs_path_for_model: (Class klass) -> Pathname
     end
   end
 end

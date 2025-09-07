@@ -46,7 +46,7 @@ module RubyLsp
           changes.each do |change|
             case change[:type]
             when FileChangeType::CREATED, FileChangeType::CHANGED
-              # TODO
+              generate_signature(change[:uri])
             when FileChangeType::DELETED
               delete_signature(change[:uri])
             end
@@ -94,6 +94,33 @@ module RubyLsp
       end
 
       # @rbs uri: String
+      def generate_signature(uri) #: void
+        path = uri_to_path(uri)
+        return unless path
+
+        klass = constantize(path)
+        return unless klass
+
+        generate_signature0(klass)
+      rescue StandardError => e
+        logger.info("Failed to generate signature for #{path}: #{e.message}")
+      end
+
+      # @rbs klass: Class
+      def generate_signature0(klass) #: void
+        return unless klass < ::ActiveRecord::Base
+        return if config.ignored_model?(klass)
+        return unless ::RbsRails::ActiveRecord.generatable?(klass)
+
+        rbs_path = get_rbs_path_for_model(klass)
+        rbs_path.dirname.mkpath
+
+        sig = ::RbsRails::ActiveRecord.class_to_rbs(klass)
+        rbs_path.write sig
+        logger.info("Updated RBS signature: #{rbs_path}")
+      end
+
+      # @rbs uri: String
       def delete_signature(uri) #: void
         path = uri_to_path(uri)
         return unless path
@@ -116,6 +143,41 @@ module RubyLsp
         return nil unless path.start_with?(::Rails.root.to_s + File::SEPARATOR)
 
         Pathname.new(path).relative_path_from(::Rails.root)
+      end
+
+      # @rbs path: Pathname
+      def constantize(path) #: Class?
+        # If the specified file is placed under autoload_paths
+        ::Rails.application.config.autoload_paths.each do |autoload_path|
+          # @type var autoload_path: String
+          next unless path.to_s.start_with?(autoload_path + File::SEPARATOR)
+
+          relative_path = path.relative_path_from(autoload_path)
+          return relative_path.to_s.chomp(".rb").classify.constantize
+        end
+
+        # If not, the file must be placed under app/*/ directories
+        relative_path = path.to_s.sub(%r{^app/.*?/}, "")
+        relative_path.chomp(".rb").classify.constantize
+      rescue NameError
+        nil
+      end
+
+      # @rbs klass: Class
+      def get_rbs_path_for_model(klass) #: Pathname
+        path, _line = begin
+          Object.const_source_location(klass.name)
+        rescue StandardError
+          nil
+        end
+
+        rbs_path = if path && Pathname.new(path).fnmatch?("#{::Rails.root}/**")
+                     Pathname.new(path).relative_path_from(::Rails.root).sub_ext(".rbs")
+                   else
+                     "app/models/#{klass.name.underscore}.rbs"
+                   end
+
+        config.signature_root_dir / rbs_path
       end
     end
   end

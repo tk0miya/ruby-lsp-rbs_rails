@@ -17,6 +17,14 @@ gems:
     revision: 14112a82013860a7d2e5246b4c4f36fbb8c349dc
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: activerecord
+  version: '8.0'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 1c0e3f62ff100436becf905ec3ae30a691019384
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: activesupport
   version: '7.0'
   source:
@@ -66,6 +74,10 @@ gems:
   source:
     type: stdlib
 - name: dbm
+  version: '0'
+  source:
+    type: stdlib
+- name: delegate
   version: '0'
   source:
     type: stdlib
