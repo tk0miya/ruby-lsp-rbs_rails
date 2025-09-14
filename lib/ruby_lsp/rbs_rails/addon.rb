@@ -37,9 +37,7 @@ module RubyLsp
         VERSION
       end
 
-      # @rbs! type fileChangeTypes = FileChangeType::CREATED | FileChangeType::CHANGED | FileChangeType::DELETED
-
-      # @rbs changes: Array[{ uri: String, type: fileChangeTypes }]
+      # @rbs changes: Array[{ uri: String, type: Integer }]
       def workspace_did_change_watched_files(changes) #: void
         return unless defined?(::Rails)
 
