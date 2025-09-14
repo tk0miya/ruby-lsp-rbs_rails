@@ -6,6 +6,7 @@ AllCops:
   TargetRubyVersion: 3.2
 
 plugins:
+  - rubocop-rails
   - rubocop-rake
   - rubocop-rspec
 
@@ -25,6 +26,9 @@ Metrics/ClassLength:
 
 Metrics/MethodLength:
   Max: 30
+
+Rails/RakeEnvironment:
+  Enabled: false
 
 RSpec/MultipleExpectations:
   Enabled: false

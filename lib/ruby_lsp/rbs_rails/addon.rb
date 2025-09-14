@@ -193,7 +193,7 @@ module RubyLsp
           nil
         end
 
-        rbs_path = if path && Pathname.new(path).fnmatch?("#{::Rails.root}/**")
+        rbs_path = if path && Pathname.new(path).fnmatch?(::Rails.root.join("**").to_s)
                      Pathname.new(path).relative_path_from(::Rails.root).sub_ext(".rbs")
                    else
                      "app/models/#{klass.name.underscore}.rbs"
