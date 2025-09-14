@@ -3,6 +3,7 @@
 require "language_server-protocol"
 require "ruby_lsp/addon"
 
+require_relative "file_writer"
 require_relative "logger"
 
 module RubyLsp
@@ -125,7 +126,7 @@ module RubyLsp
         rbs_path.dirname.mkpath
 
         sig = ::RbsRails::PathHelpers.generate
-        rbs_path.write sig
+        FileWriter.new(rbs_path).write sig
         logger.info("Updated RBS signature: #{rbs_path}")
       end
 
@@ -139,7 +140,7 @@ module RubyLsp
         rbs_path.dirname.mkpath
 
         sig = ::RbsRails::ActiveRecord.class_to_rbs(klass)
-        rbs_path.write sig
+        FileWriter.new(rbs_path).write sig
         logger.info("Updated RBS signature: #{rbs_path}")
       end
 
