@@ -2,7 +2,7 @@
 
 require_relative "lib/ruby_lsp/rbs_rails/version"
 
-Gem::Specification.new do |spec|
+Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.name = "ruby-lsp-rbs_rails"
   spec.version = RubyLsp::RbsRails::VERSION
   spec.authors = ["Takeshi KOMIYA"]

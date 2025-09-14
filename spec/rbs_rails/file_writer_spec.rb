@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe RubyLsp::RbsRails::FileWriter do
   describe "#write" do
     subject { file_writer.write(content) }
