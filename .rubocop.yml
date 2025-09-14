@@ -1,4 +1,7 @@
 AllCops:
+  Exclude:
+    - "spec/test-app/**/*"
+    - "vendor/bundle/**/*"
   NewCops: enable
   TargetRubyVersion: 3.2
 
