@@ -15,6 +15,7 @@
         "fnmatch",
         "forwardable",
         "generatable",
+        "Isig",
         "KOMIYA",
         "lsp",
         "mkpath",
@@ -23,7 +24,9 @@
         "readlines",
         "rmtree",
         "rubocop",
+        "rubygems",
         "Takeshi",
+        "tk0miya",
         "utime"
     ],
     "rbs-helper.rbs-inline-on-save": true,
