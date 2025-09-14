@@ -6,7 +6,7 @@ require "ruby_lsp/rbs_rails/addon"
 include LanguageServer::Protocol::Constant # rubocop:disable Style/MixinUsage
 
 RSpec.describe RubyLsp::RbsRails::Addon do
-  before :all do
+  before :all do # rubocop:disable RSpec/BeforeAfterAll
     test_app_path = Pathname.new(__FILE__).dirname.join("../test-app/").expand_path.to_s
     system("bundle exec rails db:migrate", chdir: test_app_path, exception: true)
   end

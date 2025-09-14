@@ -8,7 +8,7 @@ RSpec.describe RubyLsp::RbsRails::FileWriter do
       tmpdir.rmtree
     end
 
-    let(:file_writer) { RubyLsp::RbsRails::FileWriter.new(path) }
+    let(:file_writer) { described_class.new(path) }
     let(:path) { tmpdir / "test_file.rbs" }
     let(:tmpdir) { Pathname.new(Dir.mktmpdir("file_writer_test")) }
 
@@ -44,7 +44,7 @@ RSpec.describe RubyLsp::RbsRails::FileWriter do
           path.utime(mtime, mtime)
         end
 
-        let(:mtime) { Time.now - 60 }
+        let(:mtime) { Time.zone.now - 60 }
 
         it "does not modify the file" do
           file_writer.write(old_content)
