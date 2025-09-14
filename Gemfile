@@ -12,6 +12,7 @@ gem "rbs-inline", require: false
 gem "rbs_rails", github: "pocke/rbs_rails"
 gem "rspec", require: false
 gem "rubocop", "~> 1.21", require: false
+gem "rubocop-rspec", require: false
 gem "ruby-lsp-rspec", require: false
 gem "steep", require: false
 
