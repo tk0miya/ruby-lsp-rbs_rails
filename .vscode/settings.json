@@ -13,6 +13,7 @@
         "autoloaders",
         "bindir",
         "fnmatch",
+        "forwardable",
         "generatable",
         "KOMIYA",
         "lsp",

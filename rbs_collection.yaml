@@ -14,6 +14,8 @@ sources:
 path: .gem_rbs_collection
 
 gems:
+  - name: forwardable
+
   # rbs_rails conflicts with parser gem because rbs_rails distributes types for parser gem.  This is a bug of rbs_rails.
   - name: parser
     ignore: true
@@ -26,8 +28,6 @@ gems:
   - name: actiontext
     ignore: true
   - name: activejob
-    ignore: true
-  - name: activemodel
     ignore: true
   - name: activestorage
     ignore: true
