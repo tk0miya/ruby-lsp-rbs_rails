@@ -1,9 +1,10 @@
 GIT
   remote: https://github.com/pocke/rbs_rails.git
-  revision: beafce216af50a6cf6b7f742a3b81ff85ba1c2f8
+  revision: b64716c626996fe79d98c640d3db31e97b9cd36e
   specs:
-    rbs_rails (0.12.1)
+    rbs_rails (0.13.0)
       parser
+      prism
       rbs (>= 1)
 
 PATH
@@ -157,7 +158,7 @@ GEM
     nokogiri (1.19.2-x86_64-linux-gnu)
       racc (~> 1.4)
     parallel (1.27.0)
-    parser (3.3.9.0)
+    parser (3.3.11.1)
       ast (~> 2.4.1)
       racc
     pp (0.6.3)
