@@ -16,10 +16,6 @@ path: .gem_rbs_collection
 gems:
   - name: forwardable
 
-  # rbs_rails conflicts with parser gem because rbs_rails distributes types for parser gem.  This is a bug of rbs_rails.
-  - name: parser
-    ignore: true
-
   # Ignore dependencies from spec/test-app
   - name: actionmailer
     ignore: true

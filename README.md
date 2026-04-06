@@ -10,8 +10,6 @@ Install the gem and add to the application's Gemfile by executing:
 # Gemfile
 group :development do
   gem 'ruby-lsp-rbs_rails', require: false
-
-  gem 'rbs_rails', github: 'pocke/rbs_rails'  # 0.13 (unreleased) or later is required
 end
 ```
 

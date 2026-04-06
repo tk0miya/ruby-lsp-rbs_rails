@@ -32,6 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activerecord"
   spec.add_dependency "language_server-protocol"
   spec.add_dependency "railties"
-  spec.add_dependency "rbs_rails"
+  spec.add_dependency "rbs_rails", ">= 0.13.0"
   spec.add_dependency "ruby-lsp"
 end

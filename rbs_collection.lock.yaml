@@ -41,6 +41,14 @@ gems:
     revision: 51d81561ecf995e18b12cd6bba44dba59f0c59ea
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: ast
+  version: '2.4'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 51d81561ecf995e18b12cd6bba44dba59f0c59ea
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: base64
   version: 0.3.0
   source:
@@ -145,6 +153,14 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: parser
+  version: '3.2'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 51d81561ecf995e18b12cd6bba44dba59f0c59ea
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
 - name: pp
   version: '0'
   source:
@@ -154,7 +170,7 @@ gems:
   source:
     type: stdlib
 - name: prism
-  version: 1.2.0
+  version: 1.9.0
   source:
     type: rubygems
 - name: rack
@@ -202,7 +218,7 @@ gems:
   source:
     type: rubygems
 - name: rbs_rails
-  version: 0.12.1
+  version: 0.13.0
   source:
     type: rubygems
 - name: rdoc
