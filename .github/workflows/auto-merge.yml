@@ -4,7 +4,7 @@ on: pull_request
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'tk0miya/rbs_activerecord'
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'tk0miya/ruby-lsp-rbs_rails'
     steps:
       - uses: actions/create-github-app-token@v3
         id: app-token
@@ -29,7 +29,7 @@ jobs:
 
   rbs_collection:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'rbs-collection-updater[bot]' && github.repository == 'tk0miya/rbs_activerecord'
+    if: github.event.pull_request.user.login == 'rbs-collection-updater[bot]' && github.repository == 'tk0miya/ruby-lsp-rbs_rails'
     steps:
       - uses: actions/create-github-app-token@v3
         id: app-token
