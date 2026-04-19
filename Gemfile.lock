@@ -218,7 +218,7 @@ GEM
     rbs-inline (0.13.0)
       prism (>= 0.29)
       rbs (>= 3.8.0)
-    rbs_rails (0.13.0)
+    rbs_rails (0.13.1)
       parser
       prism
       rbs (>= 1)
