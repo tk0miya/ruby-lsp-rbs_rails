@@ -14,7 +14,7 @@ RSpec.describe RubyLsp::RbsRails::Addon do
   describe "#activate" do
     subject { described_class.new.activate(global_state, message_queue) }
 
-    let(:global_state) { instance_double(RubyLsp::GlobalState, workspace_path: workspace_path) }
+    let(:global_state) { instance_double(RubyLsp::GlobalState, workspace_path:) }
     let(:message_queue) { Thread::Queue.new }
 
     context "when Rails application is not found" do
@@ -53,7 +53,7 @@ RSpec.describe RubyLsp::RbsRails::Addon do
     end
 
     let(:addon) { described_class.new }
-    let(:global_state) { instance_double(RubyLsp::GlobalState, workspace_path: workspace_path) }
+    let(:global_state) { instance_double(RubyLsp::GlobalState, workspace_path:) }
     let(:message_queue) { Thread::Queue.new }
     let(:workspace_path) { Pathname.new(__FILE__).dirname.join("../test-app/").expand_path.to_s }
 
