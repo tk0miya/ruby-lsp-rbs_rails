@@ -268,6 +268,10 @@ GEM
     rubocop-rake (0.7.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1)
+    rubocop-rbs_inline (1.5.5)
+      lint_roller (~> 1.1)
+      rbs-inline
+      rubocop (>= 1.72.1, < 2.0)
     rubocop-rspec (3.10.2)
       lint_roller (~> 1.1)
       regexp_parser (>= 2.0)
@@ -336,6 +340,7 @@ DEPENDENCIES
   rubocop (~> 1.88)
   rubocop-rails
   rubocop-rake
+  rubocop-rbs_inline
   rubocop-rspec
   ruby-lsp-rbs_rails!
   ruby-lsp-rspec

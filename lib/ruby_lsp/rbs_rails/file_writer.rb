@@ -14,6 +14,7 @@ module RubyLsp
         @path = path
       end
 
+      # @rbs content: String
       def write(content) #: void
         original_content = begin
           path.read

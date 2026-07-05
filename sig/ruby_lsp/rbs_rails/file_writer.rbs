@@ -12,7 +12,8 @@ module RubyLsp
       # @rbs path: Pathname
       def initialize: (Pathname path) -> void
 
-      def write: (untyped content) -> void
+      # @rbs content: String
+      def write: (String content) -> void
     end
   end
 end
