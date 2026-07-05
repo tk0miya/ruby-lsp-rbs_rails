@@ -5,23 +5,28 @@ require "rubocop/rake_task"
 
 RuboCop::RakeTask.new
 
-task default: %i[rubocop rbs:all]
+task default: :ci
+
+task ci: %i[rubocop steep rbs:validate]
 
 namespace :rbs do
-  task all: %i[install check validate]
-
   desc "Install RBS signatures"
   task :install do
     sh "bundle exec rbs collection install --frozen"
   end
 
-  desc "Type check with Steep"
-  task :check do
-    sh "bundle exec steep check"
+  desc "Generate RBS files"
+  task :generate do
+    sh "rbs-inline", "--opt-out", "--output=sig", "lib"
   end
 
   desc "Validate RBS files"
-  task :validate do
+  task validate: "rbs:install" do
     sh "bundle exec rbs -Isig validate"
   end
+end
+
+desc "Run steep type check"
+task steep: "rbs:install" do
+  sh "bundle exec steep check"
 end
