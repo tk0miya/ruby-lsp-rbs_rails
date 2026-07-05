@@ -81,7 +81,7 @@ RSpec.describe RubyLsp::RbsRails::Addon do
 
         context "when the model is ignored" do
           before do
-            RbsRails::CLI::Configuration.instance.ignore_model_if { |klass| klass.name == "User" }
+            RbsRails::CLI::Configuration.instance.ignore_model_if { _1.name == "User" }
           end
 
           it "generates no RBS files" do

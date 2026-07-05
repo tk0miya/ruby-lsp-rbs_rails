@@ -259,6 +259,9 @@ GEM
     rubocop-ast (1.49.1)
       parser (>= 3.3.7.2)
       prism (~> 1.7)
+    rubocop-numbered-params (1.0.0)
+      lint_roller (~> 1.0)
+      rubocop (>= 1.72.1)
     rubocop-rails (2.35.5)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
@@ -338,6 +341,7 @@ DEPENDENCIES
   rbs-inline
   rspec
   rubocop (~> 1.88)
+  rubocop-numbered-params
   rubocop-rails
   rubocop-rake
   rubocop-rbs_inline
