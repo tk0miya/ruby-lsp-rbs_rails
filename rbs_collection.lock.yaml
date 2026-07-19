@@ -121,6 +121,10 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: language_server-protocol
+  version: 3.17.0.6
+  source:
+    type: rubygems
 - name: logger
   version: '1.7'
   source:
