@@ -4,8 +4,11 @@ on:
     branches:
       - main
     paths:
-      - 'lib/rbs_activerecord/version.rb'
+      - 'lib/ruby_lsp/rbs_rails/version.rb'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   release:
