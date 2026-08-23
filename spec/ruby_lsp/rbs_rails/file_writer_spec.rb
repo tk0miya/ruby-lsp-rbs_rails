@@ -13,13 +13,15 @@ RSpec.describe RubyLsp::RbsRails::FileWriter do
     let(:tmpdir) { Pathname.new(Dir.mktmpdir("file_writer_test")) }
 
     context "when the file does not exist" do
+      let(:content) { "class NewClass; end" }
+
       it "creates the file with the given content" do
         expect(path).not_to exist
 
-        file_writer.write("class NewClass; end")
+        subject
 
         expect(path).to exist
-        expect(path.read).to eq("class NewClass; end")
+        expect(path.read).to eq(content)
       end
     end
 
@@ -31,11 +33,13 @@ RSpec.describe RubyLsp::RbsRails::FileWriter do
       let(:old_content) { "class ExistingClass; end" }
 
       context "when the content is different" do
+        let(:content) { "class NewClass; end" }
+
         it "updates the file with the new content" do
-          file_writer.write("class NewClass; end")
+          subject
 
           expect(path).to exist
-          expect(path.read).to eq("class NewClass; end")
+          expect(path.read).to eq(content)
         end
       end
 
@@ -44,10 +48,11 @@ RSpec.describe RubyLsp::RbsRails::FileWriter do
           path.utime(mtime, mtime)
         end
 
+        let(:content) { old_content }
         let(:mtime) { Time.zone.now - 60 }
 
         it "does not modify the file" do
-          file_writer.write(old_content)
+          subject
 
           expect(path).to exist
           expect(path.read).to eq(old_content)

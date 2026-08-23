@@ -16,6 +16,7 @@ gem "rubocop-rails", require: false
 gem "rubocop-rake", require: false
 gem "rubocop-rbs_inline", require: false
 gem "rubocop-rspec", require: false
+gem "rubocop-rspec-unused-let", require: false
 gem "ruby-lsp-rspec", require: false
 gem "steep", require: false
 
