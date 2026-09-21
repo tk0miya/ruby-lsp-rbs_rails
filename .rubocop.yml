@@ -8,6 +8,7 @@ AllCops:
   TargetRubyVersion: 3.2
 
 plugins:
+  - rubocop-instance_variable_access
   - rubocop-numbered-params
   - rubocop-rails
   - rubocop-rake
