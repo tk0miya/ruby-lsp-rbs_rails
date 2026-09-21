@@ -11,6 +11,7 @@ gem "rake", "~> 13.4"
 gem "rbs-inline", require: false
 gem "rspec", require: false
 gem "rubocop", "~> 1.91", require: false
+gem "rubocop-instance_variable_access", require: false
 gem "rubocop-numbered-params", require: false
 gem "rubocop-rails", require: false
 gem "rubocop-rake", require: false
