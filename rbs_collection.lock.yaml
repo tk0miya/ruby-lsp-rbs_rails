@@ -1,14 +1,6 @@
 ---
 path: ".gem_rbs_collection"
 gems:
-- name: actionmailbox
-  version: '8.1'
-  source:
-    type: git
-    name: ruby/gem_rbs_collection
-    revision: ddaa559df3fbd84ca630e937e2eb59b3e1b62e3b
-    remote: https://github.com/ruby/gem_rbs_collection.git
-    repo_dir: gems
 - name: actionpack
   version: '8.1'
   source:
