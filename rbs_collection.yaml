@@ -19,6 +19,8 @@ gems:
   # Ignore dependencies from spec/test-app
   - name: actionmailer
     ignore: true
+  - name: actionmailbox
+    ignore: true
   - name: actioncable
     ignore: true
   - name: actiontext
